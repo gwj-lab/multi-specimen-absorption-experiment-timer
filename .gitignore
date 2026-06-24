@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+
+# PyInstaller output
+build/
+dist/
+*.spec.bak
+
+# Local experiment state and generated data
+timer_state.json
+results/
+AbsorptionExperimentTimer_portable/
+*.7z
+*.zip
+
+# Editor and OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
