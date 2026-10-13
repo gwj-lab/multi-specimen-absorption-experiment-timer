@@ -1,40 +1,40 @@
-# Absorption Experiment Timer
+# 多组吸水实验 absorption-experiment-timer
 
-A Windows desktop timer for capillary water absorption experiments. It supports multiple specimens running at the same time, custom specimen names, per-specimen countdown state, audible reminders, and CSV-based weighing records.
+Windows 桌面计时器，适用于毛细吸水实验中的多组试件同步计时。支持自定义试件名称、单独倒计时状态、声音提醒，以及每个试件的称重记录与导出。
 
-## Features
+## 功能
 
-- Reads a weighing schedule from `single_specimen_weighing_template.csv`.
-- Supports multiple specimens with independent countdowns.
-- Allows manually selecting the next weighing index for each specimen.
-- Plays a sound when a specimen reaches its weighing time.
-- Records weighing mass and notes into per-specimen CSV files.
-- Shows the full planned schedule and recorded results in the right-side table.
-- Supports editing and clearing recorded weighing values from the right-side panel.
-- Saves local countdown state in `timer_state.json`.
+- 从 `single_specimen_weighing_template.csv` 读取称重计划。
+- 支持多个试件并行计时，互不干扰。
+- 可为每个试件设置下一次称重序号。
+- 当试件到达称重时间时发出声音提醒。
+- 将称重质量和备注保存到各试件对应的 CSV 文件中。
+- 在右侧表格中显示完整计划和已记录结果。
+- 支持修改和清空已记录的称重数据。
+- 将本地倒计时状态保存在 `timer_state.json`。
 
-## Requirements
+## 运行要求
 
 - Windows
-- Python 3.10 or newer
-- No runtime third-party Python package is required for normal source execution.
-- Optional: PyInstaller, only needed when building the `.exe`.
+- Python 3.10 或更高版本
+- 正常源代码运行不需要额外第三方 Python 包
+- 可选：PyInstaller，仅在构建 `.exe` 时需要
 
-## Run From Source
+## 从源代码运行
 
 ```powershell
 python .\absorption_timer.py
 ```
 
-Run the built-in self-test:
+运行内置自检：
 
 ```powershell
 python .\absorption_timer.py --self-test
 ```
 
-## Schedule CSV
+## 时间表 CSV
 
-The app reads `single_specimen_weighing_template.csv` from the same folder as the script or executable. Keep the columns unchanged:
+程序会从脚本或可执行文件同目录下的 `single_specimen_weighing_template.csv` 读取数据，保留列名不变：
 
 ```csv
 序号,时间间隔,累计时间
@@ -44,37 +44,37 @@ The app reads `single_specimen_weighing_template.csv` from the same folder as th
 3,1 h,1 h
 ```
 
-Supported interval units:
+支持的时间间隔单位：
 
 - `s`
 - `min`
 - `h`
 
-Restart the app after changing the schedule CSV.
+修改计划 CSV 后请重启应用。
 
-## Data Files
+## 数据文件
 
-These files are generated locally and are intentionally not tracked by Git:
+这些文件会在本地生成，并且有意不纳入 Git 版本管理：
 
-- `timer_state.json`: current specimens and countdown state.
-- `results/`: per-specimen weighing result CSV files.
-- `dist/`, `build/`, portable release archives, and generated executables.
+- `timer_state.json`：当前试件和倒计时状态。
+- `results/`：每个试件的称重结果 CSV 文件。
+- `dist/`、`build/`、便携版压缩包，以及生成的可执行文件。
 
-## Build EXE
+## 构建 EXE
 
-Install PyInstaller if needed:
+如需安装 PyInstaller：
 
 ```powershell
 python -m pip install pyinstaller
 ```
 
-Build a windowed single-file executable:
+构建单文件窗口程序：
 
 ```powershell
 python -m PyInstaller --onefile --windowed --name AbsorptionExperimentTimer .\absorption_timer.py --noconfirm
 ```
 
-For portable use, place these items in one folder:
+便携式使用时，请将以下内容放在同一文件夹：
 
 ```text
 AbsorptionExperimentTimer.exe
@@ -83,6 +83,6 @@ timer_state.json
 results/
 ```
 
-## License
+## 许可证
 
 MIT License.
